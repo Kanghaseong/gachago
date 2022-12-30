@@ -7,10 +7,10 @@
   <div id="box">
     <div id="mybox">my</div>
     <div id="vs">VS</div>
-    <div id="enemy">enemy</div>
-    <div id="bill">bill</div>
+    <div id="enemybox">enemy</div>
+
   </div>
-  
+  <div id="bill">bill</div>
 
 </template>
 
@@ -24,54 +24,24 @@
   margin-top: 4rem;
   background-color:rgb(54, 54, 54);
   border-radius: 2rem;
+
+  display: flex;
+  flex-direction: row;
+
 }
-#mybox {
-  display: inline-block;
-  width: 20rem;
+#mybox, #vs, #enemybox {
+  width: 25rem;
   height: 15rem;
-  text-align: center;
-  line-height: 15rem;
-  background-color: darkslateblue;
-  border-radius: 1rem;
-  border: thick double #32a1ce;
-  position: relative;
-  top: 4rem;
-  right: 8rem;
+}
+
+#mybox {
+  background-color: brown;
 }
 #vs{
-  display: inline-block;
-  margin: auto;
-  position: relative;
-  top: 4rem;
-  text-align: center;
-  line-height: 3rem;
-  width: 3rem;
-  height: 3rem;
-  background-color: rgb(33, 33, 33);
-  border-radius: 0.5rem;
+  background-color: blueviolet;
 }
-#enemy{
-  display: inline-block;
-  width: 20rem;
-  height: 15rem;
-  text-align: center;
-  line-height: 15rem;
-  background-color: rgb(116, 66, 103);
-  border-radius: 1rem;
-  border: thick double #672b2b;
-  position: relative;
-  top: 4rem;
-  left: 8rem;
-  
-}
-#bill{
-  position: relative;
-  top: 15rem;
-  width: 45rem;
-  height: 15rem;
-  margin: auto;
-  background-color: rgb(46, 46, 46);
-  line-height:15rem;border-radius: 1rem;
+#enemybox{
+  background-color:chocolate
 }
 
 </style>
