@@ -12,9 +12,6 @@ export default {
       winOdds: "",
       drawOdds: "",
       loseOdds: "",
-      winPercent: "",
-      drawPercent: "",
-      losePercent: "",
       radioValue: "",
       isSelected: false
     }
@@ -43,30 +40,28 @@ export default {
 </script>
 
 <template>
+  <section id="display"> 
 
-  <div id="box"> 
-    <section id="infoBox">
-      <div class="infoText">어느쪽이 이길까요?</div>
+    <div class="infoText">어느쪽이 이길까요?</div>
 
-    </section>
-    <section id="numBox">
-      <div class="numCard" id="myNum">{{ myNumber }}</div>
+    <section id="numCards">
+      <div class="numCard" id="myNum"> {{ myNumber }} </div>
       <div id="vs">vs</div>
-      <div class="numCard" id="enemyNum" :style="{ backgroundColor : gachaColor }"> {{ enemyNumber }} </div>
+      <div class="numCard" id="enemyNum" :style=" { backgroundColor : gachaColor } "> {{ enemyNumber }} </div>
     </section>
+
     <section>
       <div class="betSelecter">
-        <input class="winRadio betSelect" name="betRadio" id="win" type="radio" v-model="radioValue" value="win"/>
+        <input class="winRadio betRadio" id="win" type="radio" v-model="radioValue" value="win"/>
         <label for="win" class="winLabel betLabel">승리</label>
 
-        <input class="drawRadio betSelect" name="betRadio" id="draw" type="radio" v-model="radioValue" value="draw"/>
+        <input class="drawRadio betRadio" id="draw" type="radio" v-model="radioValue" value="draw"/>
         <label for="draw" class="drawLabel betLabel">무승부</label>
 
-        <input class="loseRadio betSelect" name="betRadio" id="lose" type="radio" v-model="radioValue" value="lose"/>
+        <input class="loseRadio betRadio" id="lose" type="radio" v-model="radioValue" value="lose"/>
         <label for="lose" class="loseLabel betLabel">패배</label>
       </div>
     </section>
-    
     
     <section id="betBox">
       <input id="betInput" v-model="betInput" placeholder="베팅 금액" />
@@ -74,11 +69,11 @@ export default {
       <div id="balance">보유 코인 : {{ coin }} </div>
     </section>
 
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.betSelect {
+.betRadio {
   appearance: none;
   margin: 0;
 }
@@ -168,7 +163,7 @@ export default {
   font-size: large;
   color: white;
 }
-#numBox{
+#numCards{
   display:flex; 
   flex-wrap: wrap;
   position: absolute;
@@ -192,7 +187,7 @@ export default {
   line-height: 9rem;
   font-size: 4rem;
 }
-#box {
+#display {
   width: 60rem;
   height: 40rem; 
     position: absolute;
