@@ -9,9 +9,9 @@ export default {
       coin: 100,
       betInput: "",
       betStore: [],
-      winOdds: "",
-      drawOdds: "",
-      loseOdds: "",
+      winOdd: "",
+      drawOdd: "",
+      loseOdd: "",
       radioValue: "",
       isSelected: false
     }
