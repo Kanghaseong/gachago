@@ -30,7 +30,7 @@ export default {
     },
     slotMachine () {
       this.updating = true;
-      this.gachaColor = "#ff9c9c";
+      this.$parent.setGachaColor();
 
       const count = setInterval(() => {
         this.enemyNumberIs();
@@ -40,7 +40,7 @@ export default {
       setTimeout(() => {
         clearInterval(count);
         this.updating = false;
-        this.gachaColor = "#e5456f";
+        this.$parent.setGachaColor();
         this.resetNumber()
       }, 2000);
     },

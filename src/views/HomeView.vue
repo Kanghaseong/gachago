@@ -55,6 +55,13 @@ export default {
         this.numCard = "numCard";
       }, 500);
 
+    },
+    setGachaColor() {
+      if (this.gachaColor === "#e5456f") {
+        this.gachaColor = "#ff9c9c";
+      } else {
+        this.gachaColor = "#e5456f"
+      }
     }
   },
 
