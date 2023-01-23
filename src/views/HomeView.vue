@@ -9,9 +9,12 @@
       <div :class="numCard" :style=" { backgroundColor : gachaColor } "> {{ enemyNumber }} </div>
     </section>
 
-      <betSelecter @radioIs ="log"/>
+      <betSelecter @radioValueTo ="setRadio"/>
       <betBox @enemyNumberIs="n => this.enemyNumber = n"
               @myNumberIs="n => this.myNumber = n"
+              :radio-value="radioValue"
+              :my-number="myNumber"
+              :enemy-number="enemyNumber"
       />
 
   </section>
@@ -39,12 +42,13 @@ export default {
       drawOdd: "",
       loseOdd: "",
       gachaColor: "#e5456f",
-      numCard:"numCard"
+      numCard: "numCard",
+      radioValue:"none",
     }
   },
   methods: {
-    log(e) {
-      console.log(e)
+    setRadio(e) {
+      this.radioValue = e;
     },
     getRandom: function () {
       return Math.floor(Math.random() * 100);

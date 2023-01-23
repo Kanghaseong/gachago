@@ -1,12 +1,12 @@
 <template>
   <div class="betSelecter">
-    <input class="winRadio betRadio" id="win" type="radio" v-model="radioValue" value="win" @click="radioIs"/>
+    <input class="winRadio betRadio" id="win" type="radio" v-model="radioValue" value="win" @click="sendRadio"/>
     <label for="win" class="winLabel betLabel">승리</label>
 
-    <input class="drawRadio betRadio" id="draw" type="radio" v-model="radioValue" value="draw" @click="radioIs"/>
+    <input class="drawRadio betRadio" id="draw" type="radio" v-model="radioValue" value="draw" @click="sendRadio"/>
     <label for="draw" class="drawLabel betLabel">무승부</label>
 
-    <input class="loseRadio betRadio" id="lose" type="radio" v-model="radioValue" value="lose" @click="radioIs"/>
+    <input class="loseRadio betRadio" id="lose" type="radio" v-model="radioValue" value="lose" @click="sendRadio"/>
     <label for="lose" class="loseLabel betLabel">패배</label>
   </div>
 </template>
@@ -16,13 +16,12 @@ export default {
   data() {
     return {
       radioValue : "",
-      
     }
   },
   methods: {
-    radioIs() {
+    sendRadio() {
       setTimeout(() => {
-        this.$emit("radioIs", this.radioValue)
+        this.$emit("radioValueTo", this.radioValue)
       }, 0);
     }
   }

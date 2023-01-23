@@ -8,13 +8,20 @@
 
 <script>
 export default {
-  
+  props: {
+    radioValue: String,
+    myNumber: Number,
+    enemyNumber: [Number, String]
+  },
+
   data() {
     return {
       coin: 100,
       betInput: "",
       updating: false,
-      
+      myNum: this.myNumber,
+      enemyNum: this.enemyNumber,
+      gameScore: null,
     }
   },
 
@@ -23,36 +30,71 @@ export default {
       return Math.floor(Math.random() * 100);
     },
     enemyNumberIs() {
-      this.$emit("enemyNumberIs", this.enemyNumber);
+      this.$emit("enemyNumberIs", this.enemyNum);
     },
     myNumberIs() {
-      this.$emit("myNumberIs", this.myNumber);
+      this.$emit("myNumberIs", this.myNum);
     },
-    slotMachine () {
+    setUpdating() {
+      setTimeout(() => {
+        this.updating = false;
+      }, 1500);
+    },
+
+    slotMachine() {
+      if (this.radioValue === "none") return alert("Select Bet type");
+
       this.updating = true;
       this.$parent.setGachaColor();
 
       const count = setInterval(() => {
+        this.enemyNum = this.getRandom();
         this.enemyNumberIs();
-        this.enemyNumber = this.getRandom();
       }, 100);
-
       setTimeout(() => {
         clearInterval(count);
-        this.updating = false;
+      }, 1950);
+      
+      setTimeout(() => {
         this.$parent.setGachaColor();
-        this.resetNumber()
-      }, 2000);
+        this.setGameScore();
+        this.getGameResult();
+        this.resetNumber();
+        
+      }, 2000); 
     },
+
     resetNumber() {
       setTimeout(() => {
-        this.myNumber = this.getRandom();
-        this.enemyNumber = "?";
+        this.myNum = this.getRandom();
+        this.enemyNum = "?";
         this.enemyNumberIs();
         this.myNumberIs();
         this.$parent.flash()
+        this.setUpdating();
       }, 2000);
     },
+
+    setGameScore() {
+      this.gameScore = this.myNum - this.enemyNum;
+    },
+    getGameResult() {
+      if (this.radioValue === "win" && this.gameScore > 0) {
+        alert("Winner!")
+      }
+      else if (this.radioValue === "draw" && this.gameScore === 0) {
+        alert("Winner!!")
+      }
+      else if (this.radioValue === "lose" && this.gameScore < 0) {
+        alert("Winner!!!")
+      }
+      else {
+        alert("you lose...")
+      }
+    },
+    setSlip() {
+      console.log(`my : ${this.myNum}, eme : ${this.enemyNum}, radio: ${this.radioValue}, gameScore : ${this.gameScore}`)
+    }
   }
 }
 </script>
@@ -65,8 +107,9 @@ export default {
   transform: translate(-50%, -50%);
   width: 5rem;
   height: 2rem;
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   border: 0;
+  font-size: 1rem;
 }
 #gacha:hover {
   background-color: rgb(41, 159, 92);
