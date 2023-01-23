@@ -10,8 +10,8 @@
     </section>
 
       <betSelecter @radioValueTo ="setRadio"/>
-      <betBox @enemyNumberIs="n => this.enemyNumber = n"
-              @myNumberIs="n => this.myNumber = n"
+      <betBox @setEnemyNumber="n => this.enemyNumber = n"
+              @setMyNumber="n => this.myNumber = n"
               :radio-value="radioValue"
               :my-number="myNumber"
               :enemy-number="enemyNumber"

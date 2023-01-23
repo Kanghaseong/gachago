@@ -29,11 +29,11 @@ export default {
     getRandom () {
       return Math.floor(Math.random() * 100);
     },
-    enemyNumberIs() {
-      this.$emit("enemyNumberIs", this.enemyNum);
+    setEnemyNumber() {
+      this.$emit("setEnemyNumber", this.enemyNum);
     },
-    myNumberIs() {
-      this.$emit("myNumberIs", this.myNum);
+    setMyNumber() {
+      this.$emit("setMyNumber", this.myNum);
     },
     setUpdating() {
       setTimeout(() => {
@@ -49,7 +49,7 @@ export default {
 
       const count = setInterval(() => {
         this.enemyNum = this.getRandom();
-        this.enemyNumberIs();
+        this.setEnemyNumber();
       }, 100);
       setTimeout(() => {
         clearInterval(count);
@@ -60,7 +60,6 @@ export default {
         this.setGameScore();
         this.getGameResult();
         this.resetNumber();
-        
       }, 2000); 
     },
 
@@ -68,9 +67,9 @@ export default {
       setTimeout(() => {
         this.myNum = this.getRandom();
         this.enemyNum = "?";
-        this.enemyNumberIs();
-        this.myNumberIs();
-        this.$parent.flash()
+        this.setEnemyNumber();
+        this.setMyNumber();
+        this.$parent.flash();
         this.setUpdating();
       }, 2000);
     },
