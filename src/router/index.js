@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HighLowView from '../views/HighLowView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: '/highLow',
+      name: 'highLowName',
+      component: HighLowView
     },
+
+    // {
+    //   path: '/youtube',
+    //   name: 'youtubeView',
+    //   component: YoutubeView
+    // },
     // {
     //   path: '/about',
     //   name: 'about',
